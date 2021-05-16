@@ -23,6 +23,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     runtimeOnly("com.h2database:h2")
+    runtimeOnly("mysql:mysql-connector-java")
 
     // batch
     implementation("org.springframework.boot:spring-boot-starter-batch")
