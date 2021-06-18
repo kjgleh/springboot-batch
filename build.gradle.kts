@@ -7,6 +7,7 @@ plugins {
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
+    id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
 }
 
 group = "me.kjgleh"
