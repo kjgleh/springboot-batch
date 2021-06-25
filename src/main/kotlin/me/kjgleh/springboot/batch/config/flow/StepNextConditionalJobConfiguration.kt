@@ -24,7 +24,7 @@ class StepNextConditionalJobConfiguration(
     fun stepNextConditionalJob(): Job {
         return jobBuilderFactory["stepNextConditionalJob"]
             .start(conditionalJobStep1())
-            .on("FAILED") // FAILED 일 경우
+            .on(ExitStatus.FAILED.exitCode) // ExitStatus가 FAILED 일 경우
             .to(conditionalJobStep3()) // step3으로 이동한다.
             .on("*") // step3의 결과 관계 없이
             .end() // step3으로 이동하면 Flow가 종료한다.
@@ -44,7 +44,7 @@ class StepNextConditionalJobConfiguration(
             .tasklet { contribution: StepContribution, chunkContext: ChunkContext? ->
                 logger.info(">>>>> This is stepNextConditionalJob Step1")
                 /**
-                 * ExitStatus를 FAILED로 지정한다.
+                 * 조건 분기를 테스트하기 위해 ExitStatus를 FAILED로 지정한다.
                  * 해당 status를 보고 flow가 진행된다.
                  */
                 contribution.exitStatus = ExitStatus.FAILED
